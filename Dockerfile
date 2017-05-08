@@ -3,7 +3,7 @@ MAINTAINER Thomas Boerger <thomas@webhippie.de>
 
 VOLUME ["/var/lib/piwik", "/srv/www/vendor"]
 
-ENTRYPOINT ["/usr/local/bin/entrypoint"]
+ENTRYPOINT ["/usr/bin/entrypoint"]
 CMD ["/bin/s6-svscan", "/etc/s6"]
 EXPOSE 8080
 WORKDIR /srv/www
