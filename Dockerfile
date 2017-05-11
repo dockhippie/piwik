@@ -23,3 +23,15 @@ RUN curl -sLo - \
   chown -R caddy:caddy /srv/www
 
 ADD rootfs /
+
+ARG VERSION
+ARG BUILD_DATE
+ARG VCS_REF
+
+LABEL org.label-schema.version=$VERSION
+LABEL org.label-schema.build-date=$BUILD_DATE
+LABEL org.label-schema.vcs-ref=$VCS_REF
+LABEL org.label-schema.vcs-url="https://github.com/dockhippie/piwik.git"
+LABEL org.label-schema.name="Piwik"
+LABEL org.label-schema.vendor="Thomas Boerger"
+LABEL org.label-schema.schema-version="1.0"
