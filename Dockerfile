@@ -10,6 +10,8 @@ WORKDIR /srv/www
 
 ENV PIWIK_VERSION 3.0.4
 ENV PIWIK_TARBALL http://builds.piwik.org/piwik-${PIWIK_VERSION}.tar.gz
+ENV GEOIP_TARBALL http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
+
 ENV CRON_ENABLED true
 
 RUN apk update && \
@@ -19,8 +21,10 @@ RUN apk update && \
   rm -rf \
     /var/cache/apk/*
 
-RUN curl -sLo - \
-  ${PIWIK_TARBALL} | tar -xzf - --strip 1 -C /srv/www && \
+RUN curl --create-dirs -sLo /srv/www/misc/GeoIPCity.dat.gz ${GEOIP_TARBALL} && \
+  gunzip /srv/www/misc/GeoIPCity.dat.gz
+
+RUN curl -sLo - ${PIWIK_TARBALL} | tar -xzf - --strip 1 -C /srv/www && \
   chown -R caddy:caddy /srv/www
 
 ADD rootfs /
