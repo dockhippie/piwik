@@ -8,7 +8,7 @@ CMD ["/bin/s6-svscan", "/etc/s6"]
 EXPOSE 8080
 WORKDIR /srv/www
 
-ENV PIWIK_VERSION 3.0.4
+ENV PIWIK_VERSION 3.0.5
 ENV PIWIK_TARBALL http://builds.piwik.org/piwik-${PIWIK_VERSION}.tar.gz
 ENV GEOIP_TARBALL http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
 
