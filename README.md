@@ -7,9 +7,7 @@ These are docker images for [Piwik](https://piwik.org/) running on an [PHP Caddy
 
 ## Versions
 
-* [latest](https://github.com/dockhippie/piwik/tree/master) available as ```webhippie/piwik:latest``` at [Docker Hub](https://registry.hub.docker.com/u/webhippie/piwik/)
-* [3.0.4](https://github.com/dockhippie/piwik/tree/3.0.4) available as ```webhippie/piwik:3.0.4``` at [Docker Hub](https://registry.hub.docker.com/u/webhippie/piwik/)
-* [3.0.3](https://github.com/dockhippie/piwik/tree/3.0.3) available as ```webhippie/piwik:3.0.3``` at [Docker Hub](https://registry.hub.docker.com/u/webhippie/piwik/)
+To get an overview about the available versions please take a look at the [GitHub branches](https://github.com/dockhippie/piwik/branches/all) or our [Docker Hub tags](https://hub.docker.com/r/webhippie/piwik/tags/), these lists are always up to date.
 
 
 ## Volumes
