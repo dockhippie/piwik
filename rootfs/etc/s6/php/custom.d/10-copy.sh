@@ -1,11 +1,13 @@
 #!/bin/bash
 
-if [[ ! -d /var/lib/piwik/plugins/Login ]]
+if [[ -d /srv/www/plugins ]]
 then
-  echo "> copying app plugins"
-  cp -rf \
-    /srv/www/plugins/* \
-    /var/lib/piwik/plugins/
+  for PLUGIN in $(find /var/lib/piwik/plugins -type d -maxdepth 1 -mindepth 1)
+  do
+    echo "> copying ${PLUGIN} plugin"
+    rm -rf /var/lib/piwik/plugins/${PLUGIN}
+    cp -rf /srv/www/plugins/${PLUGIN} /var/lib/piwik/plugins/
+  done
 fi
 
 echo "> copying app config"
