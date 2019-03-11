@@ -1,0 +1,1 @@
+5 * * * * /usr/local/bin/console core:archive --url=http://localhost:8080/
