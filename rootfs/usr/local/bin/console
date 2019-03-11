@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-set -e
-
-pushd /srv/www >/dev/null
-  su-exec caddy php console ${@}
-popd >/dev/null

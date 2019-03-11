@@ -8,11 +8,11 @@ then
 
     echo "> copying ${NAME} plugin"
     rm -rf /var/lib/piwik/plugins/${NAME}
-    cp -rf /srv/www/plugins/${NAME} /var/lib/piwik/plugins/
+    cp -rf ${CADDY_WEBROOT}/plugins/${NAME} /var/lib/piwik/plugins/
   done
 fi
 
 echo "> copying app config"
 cp -rf \
-  /srv/www/config/* \
+  ${CADDY_WEBROOT}/config/* \
   /var/lib/piwik/config/
