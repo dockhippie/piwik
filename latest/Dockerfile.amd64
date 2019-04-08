@@ -1,4 +1,4 @@
-FROM webhippie/php-caddy:latest@sha256:e6bb6335532fb0b60dd8ea9aa4e0815ca4cc7c6f3a1f4e196e0abfd74e8b72b2
+FROM webhippie/php-caddy:latest@sha256:0389d30cc82f6c3106b9c51d260a555b865ee00a4a6e84f9b677296e1c42a5b4
 
 LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
   org.label-schema.name="Piwik" \
