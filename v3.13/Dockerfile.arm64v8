@@ -18,7 +18,7 @@ RUN apk update && \
   apk upgrade && \
   apk add php7-ldap && \
   rm -rf /var/cache/apk/* && \
-  curl -sLo - http://builds.piwik.org/piwik-3.13.1.tar.gz | tar -xzf - --strip 1 -C /srv/www && \
+  curl -sLo - http://builds.piwik.org/piwik-3.13.3.tar.gz | tar -xzf - --strip 1 -C /srv/www && \
   chown -R caddy:caddy /srv/www
 
 COPY ./overlay ./overlay-arm64v8 /
