@@ -9,10 +9,7 @@ These are docker images for [Piwik](https://piwik.org/) running on an [PHP Caddy
 ## Versions
 
 * [latest](./latest) available as `webhippie/piwik:latest`
-* [3.13](./v3.13) available as `webhippie/piwik:3.13`
-* [3.12](./v3.12) available as `webhippie/piwik:3.12`
-* [3.11](./v3.11) available as `webhippie/piwik:3.11`
-* [3.10](./v3.10) available as `webhippie/piwik:3.10`
+
 
 ## Volumes
 
