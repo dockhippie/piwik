@@ -1,1 +1,0 @@
-@hourly /usr/bin/console core:archive --url=http://localhost:8080/
