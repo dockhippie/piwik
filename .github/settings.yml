@@ -1,6 +1,7 @@
+---
 repository:
   name: piwik
-  description: Docker images for Piwik
+  description: Docker images for piwik
   topics: docker, image
 
   private: false
