@@ -2,5 +2,5 @@
 source /usr/bin/entrypoint
 
 pushd /srv/www >/dev/null
-  su-exec caddy php console "${@}"
+  su-exec apache php console "${@}"
 popd >/dev/null

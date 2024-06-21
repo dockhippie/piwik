@@ -1,24 +1,28 @@
-FROM webhippie/php-caddy:latest-amd64
+FROM ghcr.io/dockhippie/php-apache:8.3-amd64
 
-LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
-  org.label-schema.name="Piwik" \
-  org.label-schema.version="3.4" \
-  org.label-schema.vendor="Thomas Boerger" \
-  org.label-schema.schema-version="1.0"
-
+VOLUME ["/var/lib/piwik"]
 EXPOSE 8080
 
 WORKDIR /srv/www
-ENTRYPOINT ["/usr/bin/entrypoint"]
-CMD ["/bin/s6-svscan", "/etc/s6"]
-
-ENV CRON_ENABLED true
+CMD ["/usr/bin/container"]
 
 RUN apk update && \
   apk upgrade && \
-  apk add php7-ldap && \
-  rm -rf /var/cache/apk/* && \
-  curl -sLo - http://builds.piwik.org/piwik-3.4.0.tar.gz | tar -xzf - --strip 1 -C /srv/www && \
-  chown -R caddy:caddy /srv/www
+  apk add php${PHP_PACKAGE_VERSION}-ldap sqlite git && \
+  rm -rf /var/cache/apk/*
 
-COPY ./overlay ./overlay-amd64 /
+ENV PHP_COMPOSER_INSTALL=false
+
+# renovate: datasource=github-releases depName=kanboard/kanboard
+ENV MATOMO_VERSION=3.4.0
+
+# renovate: datasource=github-releases depName=aptible/supercronic
+ENV SUPERCRONIC_VERSION=0.2.30
+
+RUN curl -sSLo - http://builds.matomo.org/matomo-${MATOMO_VERSION}.tar.gz | tar -xzf - --strip 1 -C /srv/www && \
+  cd /srv/www && \
+  chown -R apache:apache /srv/www && \
+  curl -sSLo /usr/bin/supercronic https://github.com/aptible/supercronic/releases/download/v${SUPERCRONIC_VERSION}/supercronic-linux-amd64 && \
+  chmod +x /usr/bin/supercronic
+
+COPY ./overlay /

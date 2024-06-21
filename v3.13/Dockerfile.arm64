@@ -1,0 +1,28 @@
+FROM ghcr.io/dockhippie/php-apache:8.3-arm64
+
+VOLUME ["/var/lib/piwik"]
+EXPOSE 8080
+
+WORKDIR /srv/www
+CMD ["/usr/bin/container"]
+
+RUN apk update && \
+  apk upgrade && \
+  apk add php${PHP_PACKAGE_VERSION}-ldap sqlite git && \
+  rm -rf /var/cache/apk/*
+
+ENV PHP_COMPOSER_INSTALL=false
+
+# renovate: datasource=github-releases depName=kanboard/kanboard
+ENV MATOMO_VERSION=3.13.6
+
+# renovate: datasource=github-releases depName=aptible/supercronic
+ENV SUPERCRONIC_VERSION=0.2.30
+
+RUN curl -sSLo - http://builds.matomo.org/matomo-${MATOMO_VERSION}.tar.gz | tar -xzf - --strip 1 -C /srv/www && \
+  cd /srv/www && \
+  chown -R apache:apache /srv/www && \
+  curl -sSLo /usr/bin/supercronic https://github.com/aptible/supercronic/releases/download/v${SUPERCRONIC_VERSION}/supercronic-linux-arm64 && \
+  chmod +x /usr/bin/supercronic
+
+COPY ./overlay /
