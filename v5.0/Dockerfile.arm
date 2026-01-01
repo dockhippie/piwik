@@ -26,3 +26,7 @@ RUN curl -sSLo - http://builds.matomo.org/piwik-${PIWIK_VERSION}.tar.gz | tar -x
   chmod +x /usr/bin/supercronic
 
 COPY ./overlay /
+
+RUN find /etc/container.d /etc/entrypoint.d -type f -name \*.sh -exec sed -i 's/\r$//' {} +; \
+  sed -i 's/\r$//' /usr/bin/console /usr/bin/container* && \
+  chmod +x /usr/bin/console /usr/bin/container* /etc/container.d/*.sh /etc/entrypoint.d/*.sh
