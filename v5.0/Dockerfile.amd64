@@ -1,4 +1,4 @@
-FROM ghcr.io/dockhippie/php-apache:8.4-amd64@sha256:75c4aa4b3bf9bb30659ba1b0f92ff5837aaa88322fcfd810cab382e768e3c64f
+FROM ghcr.io/dockhippie/php-apache:8.4-amd64@sha256:e1b36fd5e3dcdc37f17a26c93ef58e886790308722db406e4c3933d90e4a6db6
 
 VOLUME ["/var/lib/piwik"]
 EXPOSE 8080
