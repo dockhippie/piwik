@@ -1,7 +1,7 @@
 ---
 repository:
   name: piwik
-  description: Docker images for piwik
+  description: Docker images for Piwik/Matomo
   topics: docker, image
 
   private: false
